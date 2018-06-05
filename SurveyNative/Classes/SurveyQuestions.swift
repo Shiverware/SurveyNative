@@ -1241,7 +1241,7 @@ open class SurveyQuestions {
          sectionChanges.scrollPath = calculateScrollPath(sectionChanges)
 //         let newNumRows = self.numberOfRows(for: questionPath.primaryQuestionIndex)
 //         if newNumRows != numRows {
-//            sectionChanges.reloadSections = IndexSet(integer: indexPath.section)
+        sectionChanges.reloadSections = IndexSet(integer: indexPath.section)
 //         }
          return sectionChanges
       } else if questionType == "multi_select" && isOptionType(questionPath) {
