@@ -1239,7 +1239,7 @@ open class SurveyQuestions {
          self.sectionsToInsert(questionPath: questionPath).forEach( {unSkippedSet.insert($0) })
          sectionChanges.insertSections = unSkippedSet
          sectionChanges.scrollPath = calculateScrollPath(sectionChanges)
-         let newNumRows = self.numberOfRows(for: questionPath.primaryQuestionIndex)
+//         let newNumRows = self.numberOfRows(for: questionPath.primaryQuestionIndex)
 //         if newNumRows != numRows {
 //            sectionChanges.reloadSections = IndexSet(integer: indexPath.section)
 //         }
