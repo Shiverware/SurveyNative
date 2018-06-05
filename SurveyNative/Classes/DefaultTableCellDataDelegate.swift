@@ -46,13 +46,16 @@ open class DefaultTableCellDataDelegate : NSObject, TableCellDataDelegate {
    
    open func submitData() {
       let session = URLSession.shared
-      let url = URL(string: surveyQuestions.submitUrl())
-      var request = URLRequest(url: url!)
-      let jsonData = try? JSONSerialization.data(withJSONObject: surveyQuestions.submitJson())
-      request.httpMethod = "POST"
-      request.httpBody = jsonData
-      let task = session.dataTask(with: request as URLRequest, completionHandler: self.submitCompletionHandler)
-      task.resume()
+    
+      // Only submit data to a URL if one has been optionally provided
+      if let submitURL = surveyQuestions.submitUrl(), let url = URL(string: submitURL) {
+        var request = URLRequest(url: url)
+        let jsonData = try? JSONSerialization.data(withJSONObject: surveyQuestions.submitJson())
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        let task = session.dataTask(with: request as URLRequest, completionHandler: self.submitCompletionHandler)
+        task.resume()
+      }
    }
 
    open func getSurveyQuestions() -> SurveyQuestions {
