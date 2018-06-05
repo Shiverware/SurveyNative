@@ -10,4 +10,5 @@ import Foundation
 
 public protocol SurveyAnswerDelegate {
    func question(for id: String, answer: Any)
+   func didFinishSurvey(withAnswers answers: [String: Any])
 }

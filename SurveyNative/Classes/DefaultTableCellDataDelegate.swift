@@ -56,6 +56,7 @@ open class DefaultTableCellDataDelegate : NSObject, TableCellDataDelegate {
         let task = session.dataTask(with: request as URLRequest, completionHandler: self.submitCompletionHandler)
         task.resume()
       }
+      surveyQuestions.surveyAnswerDelegate?.didFinishSurvey(withAnswers: surveyQuestions.answers)
    }
 
    open func getSurveyQuestions() -> SurveyQuestions {
