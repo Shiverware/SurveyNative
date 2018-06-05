@@ -1232,7 +1232,7 @@ open class SurveyQuestions {
                self.answerQuestion(questionPath, data: data)
             }
          }
-         let numRows = self.numberOfRows(for: questionPath.primaryQuestionIndex)
+//         let numRows = self.numberOfRows(for: questionPath.primaryQuestionIndex)
          let (skipped, unSkippedQ) = updateSkippedQuestions(self.id(for: question))
          sectionChanges.removeSections = skipped
          var unSkippedSet = self.activeIndexSet(for: unSkippedQ)
@@ -1240,9 +1240,9 @@ open class SurveyQuestions {
          sectionChanges.insertSections = unSkippedSet
          sectionChanges.scrollPath = calculateScrollPath(sectionChanges)
          let newNumRows = self.numberOfRows(for: questionPath.primaryQuestionIndex)
-         if newNumRows != numRows {
-            sectionChanges.reloadSections = IndexSet(integer: indexPath.section)
-         }
+//         if newNumRows != numRows {
+//            sectionChanges.reloadSections = IndexSet(integer: indexPath.section)
+//         }
          return sectionChanges
       } else if questionType == "multi_select" && isOptionType(questionPath) {
          let data = type == "option" ? self.text(for: questionPath) : self.otherAnswer(for: questionPath) ?? ""
@@ -1292,7 +1292,7 @@ open class SurveyQuestions {
    }
    
    func questionPath(updateId: String) -> QuestionPath {
-      let idArr = updateId.characters.split(separator: ":", omittingEmptySubsequences: false).map(String.init)
+      let idArr = updateId.split(separator: ":", omittingEmptySubsequences: false).map(String.init)
       let primaryQuestionIndex = Int(idArr[0])
       let subQuestionIndex = Int(idArr[1])
       let row = Int(idArr[2])
